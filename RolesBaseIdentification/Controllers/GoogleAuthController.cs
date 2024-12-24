@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Google.Authenticator;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,17 @@ namespace RolesBaseIdentification.Controllers
 			_configuration = configuration;
 		}
 
-		
+		[HttpGet("EnableGoogleAuthenticator")]
+		public async Task<bool> EnableGoogleAuthenticator(string userName)
+		{
+			var user = await _userManager.FindByNameAsync(userName);
+
+			string secretName = "secretName";
+			string secretKey = "secretKey";
+
+			var authenticator = new TwoFactorAuthenticator();
+			return true;
+		}
+
 	}
 }
