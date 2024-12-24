@@ -26,6 +26,9 @@ namespace RolesBaseIdentification.Controllers
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user != null && await _userManager.CheckPasswordAsync(user, request.Password))
             {
+
+
+
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
             {
